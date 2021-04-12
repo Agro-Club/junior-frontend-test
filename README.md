@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+## Задача
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Реализовать список продуктов с фильтрами и поиском.
 
-## Available Scripts
+**Фильтр по категории**: позволяет выбрать несколько категорий одновременно и сбросить выбор по клику на опцию `All`.
 
-In the project directory, you can run:
+**Фильтры по статусам**: позволяет включить и выключить просмотр продуктов, с соответствующей опцией.
 
-### `yarn start`
+**Поле поиска** позволяет искать в списке продуктов по названию/описанию с учетом фильтров.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*По умолчанию в фильтрах ничего не выбрано*.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Дизайн
 
-### `yarn test`
+Макет [в Фигме](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev). 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Список представлен в двух вариантах — [десктопном](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev?node-id=5477%3A11) и [планшетном](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev?node-id=5480%3A6814), но сверстать его нужно респонсивно, чтобы на любом разрешении экрана контент оторбражался корректно. В мобильном виде можно менять разметку как угодно — переставлять блоки местами, менять вид карточки продукта и т.д. Постарайтесь сделать так, чтобы мобильный вид был максимально консистентным с десктопным дизайном, но в то же время удобным для использования на мобильном устройстве.
 
-### `yarn build`
+В проекте уже подключен используемый в дизайне шрифт *Montserrat*.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Вместе с запуском проекта локально запускается API, доступное на [http://localhost:4000](http://localhost:4000). Также доступен Swagger на [http://localhost:4000/swagger/](http://localhost:4000/swagger/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+В API два эндпойнта:
+#### `/api/category` - список категорий
+```json
+[
+  {
+    "id": "string",
+    "name": "string"
+  }
+]
+```
+#### `/api/product` - список продуктов
+```json
+  {
+    "results": [
+      {
+        "id": "string",
+        "name": "string",
+        "description": "string",
+        "categoryId": "string",
+        "categoryName": "string",
+        "isLimited": "boolean",
+        "isNew": "boolean"
+      }
+    ]
+  }
+```
 
-### `yarn eject`
+`/api/product` принимает параметры:
+- `isNew`  boolean 
+- `isLimited`  boolean 
+- `category`  [string] 
+- `search` string 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+⚠️ Чтобы приблизить работу с API к реальным условиям, запросы иногда будут падать с ошибкой. Также каждый запрос имеет рандомную задержку ответа от 100 до 1000мс. ⚠️
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Старт
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Сделать форк этого репозитория
+2. Склонировать форк
+3. Установить модули командой `yarn`
+4. Запустить проект командой `yarn start` и открыть [http://localhost:3000](http://localhost:3000) в своём браузере
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+При запущенном проекте внесённые правки будут сразу же отображаться в браузер (перезагружать страницу для этого не нужно).
 
-## Learn More
+## Что есть в проекте
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Скелетон для клиент-серверного взаимодействия
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+В проекте уже есть хук `useProductList.js` для работы с API. Он неидеален (как и всё в этом мире), поэтому, вероятно, вы захотите его доработать или же написать свою реализацию клиент-серверного взаимодействия — с помощью готовой библиотеки или самостоятельно. *Дисклеймер: использование этого хука не будет считаться минусом*.
 
-### Code Splitting
+#### Скелетон для списка
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+В `ProductList.js` реализован простой список, вы можете использовать его или написать свой.
 
-### Analyzing the Bundle Size
+#### Глобальные стили в `index.css`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### [SASS](https://sass-lang.com/)
 
-### Making a Progressive Web App
+В своём CSS вы можете использовать SASS-синтаксис. SASS-файлы должны иметь расширение `.scss`. Это не обязательно, если вам привычнее исполользовать обычный CSS, создавайте файлы со стилями с расширением `.css`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### [CSS Modules](https://github.com/css-modules/css-modules)
 
-### Advanced Configuration
+Для того, чтобы изоляцию стилей между компонентами вы можете использовать CSS модули. Для этого файлы со стилями должны иметь `.module` в названии  (например, `ProductList.module.scss`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Ограничения
 
-### Deployment
+Нельзя менять файлы за пределами папки `src` (внутри `src` можно как угодно менять/создавать любые файлы). Для решения задачи можно использовать любые внешние библиотеки, если они необходимы.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Чеклист
 
-### `yarn build` fails to minify
+Перед тем, как отправить ссылку с готовым заданием, убедитесь, что:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+✅ Проект запускается
+
+✅ Вы не оставили закомментированный код
+
+✅ В консоли нет ошибок/ворнингов
+
+✅ Страница корректно отображается на любом разрешении и в последних версиях Chrome, Safari, Firefox и Edge. Для тестирования в разных браузерах можно воспользоваться сервисом [BrowserStack](https://www.browserstack.com/).
+
+✅ Фильтры фильтруют, поиск ищет :)
+
+--------------------
+
+Проект создан с помощью [Create React App](https://github.com/facebook/create-react-app).
+
