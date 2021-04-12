@@ -23,7 +23,7 @@
 
 ## API
 
-Вместе с запуском проекта локально запускается API. Также доступен Swagger на [http://localhost:4000/swagger/](http://localhost:4000/swagger/).
+Вместе с запуском проекта локально запускается API. С методами API можно ознакомиться на [http://localhost:4000/swagger/](http://localhost:4000/swagger/).
 
 ⚠️ Чтобы приблизить работу с API к реальным условиям, запросы иногда будут завершаться с ошибкой. Ответы от API приходят с искусственной задержкой от 100мс до 1000мс. ⚠️
 
@@ -33,12 +33,13 @@
 [
   {
     "id": "string",
-    "name": "string"
+    "name": "string",
+    "type": "string"
   }
 ]
 ```
 #### `GET /api/product` - список продуктов
-```json
+```json5
   {
     "results": [
       {
@@ -47,6 +48,7 @@
         "description": "string",
         "categoryId": "string",
         "categoryName": "string",
+        "categoryType": "string", 
         "isLimited": "boolean",
         "isNew": "boolean"
       }
@@ -59,6 +61,8 @@
 - `isLimited`  boolean 
 - `category`  [string] 
 - `search` string
+
+❕ API ничего не знает про картинки в карточке продукта, поэтому вам нужно сопоставить категорию с картинкой самостоятельно.
 
 ## Старт
 
@@ -117,7 +121,8 @@ yarn start
 
 ## Как отправить выполненное задание
 
-Присылайте ссылку на свой github-репозиторий с решением на почту [l.rian@agro.club](mailto:l.rian@agro.club) или [g.zander@agro.club](mailto:g.zander@agro.club) c темой "Тестовое задание".
+1. Запушить решение в свой github-репозиторий
+2. Прислать ссылку на репозиторий на почту [l.rian@agro.club](mailto:l.rian@agro.club) или [g.zander@agro.club](mailto:g.zander@agro.club) c темой "Тестовое задание".
 
 ## Вопросы
 
