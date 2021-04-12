@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+## Задача
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Реализовать компонент для отображения списка продуктов из API с выбранным фильтром и поиском.
 
-## Available Scripts
+**Фильтр по категории**: позволяет отфильтровать продукты по одной или нескольким категориям и сбросить выбор по клику на опцию `All`. Список категорий нужно получить из API.
 
-In the project directory, you can run:
+**Фильтры по статусам**: позволяет отфильтровать продукты по выбранному статусу.
 
-### `yarn start`
+**Поле поиска** позволяет искать в списке продуктов по названию/описанию с учетом фильтров.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*Фильрация и поиск реализованы на стороне API, нужно только передать правильные параметры. По умолчанию в фильтрах ничего не выбрано*.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Дизайн
 
-### `yarn test`
+Макет [в Фигме](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev). 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Список нужно сверстать адаптивно:
+- [для десктопа](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev?node-id=5477%3A11) 
+- [для планшетов](https://www.figma.com/file/sOoPi2gOZvfqjOQHa9awMC/Agro.Club-Home-project-Junior-Dev?node-id=5480%3A6814)
+- для мобильных устройств адаптируйте имеющийся дизайн самостоятельно, постарайтесь сделать его как можно более консистентным
 
-### `yarn build`
+## API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Вместе с запуском проекта локально запускается API. С методами API можно ознакомиться на [http://localhost:4000/swagger/](http://localhost:4000/swagger/).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+⚠️ Чтобы приблизить работу с API к реальным условиям, запросы иногда будут завершаться с ошибкой. Ответы от API приходят с искусственной задержкой от 100мс до 1000мс. ⚠️
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+В API два эндпойнта:
+#### `GET /api/category` - список категорий
+```json
+[
+  {
+    "id": "string",
+    "name": "string",
+    "type": "string"
+  }
+]
+```
+#### `GET /api/product` - список продуктов
+```json5
+  {
+    "results": [
+      {
+        "id": "string",
+        "name": "string",
+        "description": "string",
+        "categoryId": "string",
+        "categoryName": "string",
+        "categoryType": "string", 
+        "isLimited": "boolean",
+        "isNew": "boolean"
+      }
+    ]
+  }
+```
 
-### `yarn eject`
+`GET /api/product` принимает параметры:
+- `isNew`  boolean 
+- `isLimited`  boolean 
+- `category`  [string] 
+- `search` string
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+❕ API ничего не знает про картинки в карточке продукта, поэтому вам нужно сопоставить категорию с картинкой самостоятельно.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Старт
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Склонировать репозиторий 
+```shell
+git clone git@github.com:Agro-Club/junior-frontend-test.git
+```
+2. Установить модули
+```shell
+yarn
+```
+3. Запустить проект
+```shell
+yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+После запуска проект будет доступен на [http://localhost:3000](http://localhost:3000). Внесённые правки будут сразу же отображаться в браузере (перезагружать страницу для этого не нужно).
 
-## Learn More
+## Что есть в проекте
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Скелетон для клиент-серверного взаимодействия
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+В проекте уже есть хук  [`useProductList.js`](src/components/ProductList/useProductList.js) для работы с API. Он неидеален (как и всё в этом мире), поэтому, вероятно, вы захотите его доработать или же написать свою реализацию клиент-серверного взаимодействия — с помощью готовой библиотеки или самостоятельно. *Дисклеймер: использование этого хука не будет считаться минусом*.
 
-### Code Splitting
+#### Скелетон для списка
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+В [`ProductList.js`](src/components/ProductList/ProductList.js) реализован простой список, вы можете использовать его или написать свой.
 
-### Analyzing the Bundle Size
+#### Глобальные стили
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+В [`index.css`](src/index.css) подключен используемый в дизайне шрифт *Montserrat*, а также содержатся базовые стили для всего приложения (и вы можете их менять при необходимости).
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### [SASS](https://sass-lang.com/)
 
-### Advanced Configuration
+В файлах с расширением `.scss` можно использовать SASS-синтаксис. Если вы с ним не знакомы или предпочитаете обычный CSS, используйте расширение `.css`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### [CSS Modules](https://github.com/css-modules/css-modules)
 
-### Deployment
+Для изоляции стилей между компонентами вы можете использовать CSS модули. Для этого файлы со стилями должны иметь `.module` в названии  (например, `ProductList.module.scss`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Ограничения
 
-### `yarn build` fails to minify
+Не изменяйте файлы за пределами папки `src` (внутри `src` можно как угодно менять/создавать любые файлы). Для решения задачи **можно** использовать любые внешние библиотеки, если они необходимы.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Чеклист
+
+Перед тем, как отправить ссылку с решением, убедитесь, что:
+
+✅ Проект запускается
+
+✅ Не осталось закомментированного кода
+
+✅ В консоли нет ошибок/ворнингов
+
+✅ Контент корректно отображается на любом разрешении в последних версиях Chrome, Safari, Firefox и Edge. Для тестирования в разных браузерах можно воспользоваться сервисом [BrowserStack](https://www.browserstack.com/).
+
+✅ Фильтры фильтруют, поиск ищет 😎
+
+## Как отправить выполненное задание
+
+1. Запушить решение в свой github-репозиторий
+2. Прислать ссылку на репозиторий на почту [l.rian@agro.club](mailto:l.rian@agro.club) или [g.zander@agro.club](mailto:g.zander@agro.club) c темой "Тестовое задание".
+
+## Вопросы
+
+Если возникли вопросы по решению задачи, что-то не работает или просто требуется помощь, пишите на почту [l.rian@agro.club](mailto:l.rian@agro.club) или [g.zander@agro.club](mailto:g.zander@agro.club) c темой "Вопрос по тестовому".
+
+--------------------
+
+Проект создан с помощью [Create React App](https://github.com/facebook/create-react-app).
+
