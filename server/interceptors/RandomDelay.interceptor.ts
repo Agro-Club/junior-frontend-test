@@ -2,6 +2,7 @@ import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nes
 import { Observable } from 'rxjs'
 import { delay } from 'rxjs/operators'
 
+const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
 @Injectable()
 export class RandomDelayInterceptor implements NestInterceptor {
   private readonly delay: { min: number; max: number }
@@ -9,7 +10,7 @@ export class RandomDelayInterceptor implements NestInterceptor {
     this.delay = delay
   }
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const delayMs = Math.floor(Math.random() * (this.delay.max - this.delay.min + 1) + this.delay.min)
+    const delayMs = rand(this.delay.min, this.delay.max)
     return next.handle().pipe(delay(delayMs))
   }
 }

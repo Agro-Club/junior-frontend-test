@@ -8,7 +8,7 @@ import { APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core'
 import { CategoryModule } from 'category/category.module'
 import { ProductModule } from 'product/product.module'
 import { RandomDelayInterceptor } from 'interceptors/RandomDelay.interceptor'
-import { RandomErrorInterceptor } from 'interceptors/RandormError.interceptor'
+import { RandomErrorInterceptor } from 'interceptors/RandomError.interceptor'
 
 @Module({
   imports: [

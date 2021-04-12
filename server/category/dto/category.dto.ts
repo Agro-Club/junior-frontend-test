@@ -12,9 +12,17 @@ export class CategoryDto implements Category {
   id: string
   @IsString()
   @ApiProperty({
-    description: 'Product name.',
+    description: 'Category name.',
     type: String,
     required: true,
   })
   name: string
+
+  @IsString()
+  @ApiProperty({
+    description: 'Category type.',
+    type: String,
+    required: true,
+  })
+  type: string
 }

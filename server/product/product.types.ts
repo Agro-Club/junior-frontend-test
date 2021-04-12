@@ -4,6 +4,7 @@ export type Product = {
   description: string
   categoryId: string
   categoryName: string
+  categoryType: string
   isLimited: boolean
   isNew: boolean
 }
