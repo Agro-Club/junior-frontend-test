@@ -4,9 +4,11 @@ import { CorrelationMiddleware } from 'correlation.middleware'
 import { CORRELATION_ID_PROP } from 'constants/correlationId'
 import { ConfigModule } from 'config/config.module'
 import { ConfigService } from 'config/config.service'
-import { APP_PIPE } from '@nestjs/core'
+import { APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core'
 import { CategoryModule } from 'category/category.module'
 import { ProductModule } from 'product/product.module'
+import { RandomDelayInterceptor } from 'interceptors/RandomDelay.interceptor'
+import { RandomErrorInterceptor } from 'interceptors/RandormError.interceptor'
 
 @Module({
   imports: [
@@ -36,6 +38,14 @@ import { ProductModule } from 'product/product.module'
     {
       provide: APP_PIPE,
       useFactory: () => new ValidationPipe({ transform: true }),
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useFactory: () => new RandomDelayInterceptor({ min: 0, max: 1000 }),
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useFactory: () => new RandomErrorInterceptor({ ratio: 0.1 }),
     },
   ],
 })

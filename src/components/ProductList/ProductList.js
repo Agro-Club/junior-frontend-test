@@ -29,7 +29,6 @@ const reducer = (state, action) => {
         ...state,
         status: 'work',
         filter: {
-          ...state.filter,
           ...initialState.filter,
         },
       }
@@ -73,14 +72,14 @@ const useProductList = () => {
       `isNew=${filter.isNew}`
     ].join('&')
 
-    fetch(`/api/product?${serializeFilter(state.filter)}`)
+    fetch(`/api/products?${serializeFilter(state.filter)}`)
       .then(res => {
-        if (res.ok && res.status === 200) {
-          res.json().then(data => dispatch({ type: 'request:success', payload: data.results }))
-        } else {
-          dispatch({ type: 'request:error' })
+        if (!res.ok || res.status !== 200) {
+          throw new Error(`Request failed with status code ${res.status}`)
         }
+        return res.json()
       })
+      .then(data => dispatch({ type: 'request:success', payload: data.results }))
       .catch(err => {
         console.error(err)
         dispatch({ type: 'request:error' })
@@ -101,13 +100,16 @@ const ProductList = () => {
   return (
     <div className={styles.root}>
       <div className={styles.filtersContainer}>
-        <label htmlFor="is_new">Is new</label>
-        <input
-          id="is_new"
-          type="checkbox"
-          onChange={() => updateFilter({ isNew: !filter.isNew })}
-          checked={filter.isNew}
-        />
+        <div>Filters</div>
+        <div>
+          <label htmlFor="is_new">Is new</label>
+          <input
+            id="is_new"
+            type="checkbox"
+            onChange={() => updateFilter({ isNew: !filter.isNew })}
+            checked={filter.isNew}
+          />
+        </div>
       </div>
       <div>Status: {status}</div>
       <div className={styles.itemsContainer}>
