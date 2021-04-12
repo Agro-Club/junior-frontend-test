@@ -1,4 +1,4 @@
-import { IsString, IsArray, IsOptional, IsBoolean } from 'class-validator'
+import { IsString, IsArray, IsOptional } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 import { PagingDto } from 'dto/paging.dto'
 import { BooleanString } from 'transformers/BooleanString'
@@ -23,8 +23,7 @@ export class ProductListFilterDto extends PagingDto {
   isLimited?: boolean
 
   @ApiProperty({
-    title: 'Filter by categories.',
-    description: 'List of categories.',
+    description: 'Filter by categories.',
     type: [String],
     required: false,
   })
@@ -32,4 +31,13 @@ export class ProductListFilterDto extends PagingDto {
   @IsArray()
   @IsString({ each: true })
   category?: string[]
+
+  @ApiProperty({
+    description: 'Search products by text in product name or description.',
+    type: String,
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  search?: string
 }
