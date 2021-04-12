@@ -1,0 +1,15 @@
+.idea
+build
+config
+docker
+node_modules
+public
+scripts
+
+.dockerignore
+.editorconfig
+.env
+.env.development.local
+.gitignore
+Dockerfile
+yarn.lock

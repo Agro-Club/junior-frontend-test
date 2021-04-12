@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": false,
+
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "incremental": true,
+    "pretty": true,
+    "noEmit": false,
+    "forceConsistentCasingInFileNames": true,
+
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "importHelpers": true,
+
+    "esModuleInterop": true,
+
+    "isolatedModules": false,
+    "moduleResolution": "node",
+    "declaration": false,
+
+    "types": ["reflect-metadata", "@types/jest"],
+
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "outDir": "../dist",
+    "baseUrl": "./"
+  },
+  "exclude": [
+    "../node_modules", "dist"
+  ]
+}
