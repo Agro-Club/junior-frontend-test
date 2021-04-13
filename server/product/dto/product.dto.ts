@@ -39,6 +39,14 @@ export class ProductDto implements Product {
   })
   categoryName: string
 
+  @IsString()
+  @ApiProperty({
+    description: 'Category type.',
+    type: String,
+    required: true,
+  })
+  categoryType: string
+
   @IsBoolean()
   @ApiProperty({
     description: 'Is product limited.',
