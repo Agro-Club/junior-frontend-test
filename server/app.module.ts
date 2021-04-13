@@ -1,7 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common'
-import { LoggerModule } from 'nestjs-pino/dist'
 import { CorrelationMiddleware } from 'correlation.middleware'
-import { CORRELATION_ID_PROP } from 'constants/correlationId'
 import { ConfigModule } from 'config/config.module'
 import { ConfigService } from 'config/config.service'
 import { APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core'
@@ -11,29 +9,7 @@ import { RandomDelayInterceptor } from 'interceptors/RandomDelay.interceptor'
 import { RandomErrorInterceptor } from 'interceptors/RandormError.interceptor'
 
 @Module({
-  imports: [
-    ConfigModule,
-    LoggerModule.forRoot({
-      pinoHttp: [
-        {
-          prettyPrint:
-            process.env.NODE_ENV === 'development'
-              ? {
-                  colorize: true,
-                  ignore: 'hostname',
-                  translateTime: 'dd/mm/yyyy, HH:MM:ss TT',
-                }
-              : false,
-          genReqId: req => {
-            return req[CORRELATION_ID_PROP]
-          },
-        },
-        process.stdout,
-      ],
-    }),
-    CategoryModule,
-    ProductModule,
-  ],
+  imports: [ConfigModule, CategoryModule, ProductModule],
   providers: [
     {
       provide: APP_PIPE,
