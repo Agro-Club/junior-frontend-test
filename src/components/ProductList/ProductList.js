@@ -3,26 +3,24 @@ import { useProductList } from './useProductList'
 
 const ProductList = () => {
   const { items, filter, status, updateFilter } = useProductList()
+
+  const handleFilterIsNewUpdate = () => updateFilter({ isNew: !filter.isNew })
+
   return (
     <div className={styles.root}>
       <div className={styles.filtersContainer}>
-        <div>Filters</div>
+        <div>Filters placeholder</div>
         <div>
           <label htmlFor="is_new">Is new</label>
-          <input
-            id="is_new"
-            type="checkbox"
-            onChange={() => updateFilter({ isNew: !filter.isNew })}
-            checked={filter.isNew}
-          />
+          <input id="is_new" type="checkbox" onChange={handleFilterIsNewUpdate} checked={filter.isNew} />
         </div>
       </div>
       <div>Status: {status}</div>
       <div className={styles.itemsContainer}>
         {items.map(item => (
           <div className={styles.productContainer} key={item.id}>
-            <div>Name: {item.name}</div>
-            <div>{item.description}</div>
+            <span className={styles.productName}>{item.name}</span>
+            <span>{item.description}</span>
           </div>
         ))}
       </div>

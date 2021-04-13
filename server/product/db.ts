@@ -12,8 +12,7 @@ export const db: Product[] = [
   {
     id: '642dfb2c-9a08-4656-a0cf-ef0fb327cc7f',
     name: 'WH 1001',
-    description:
-      'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
+    description: 'New range of formal shirts',
     categoryId: '0a256070-cdd1-4392-aab6-23fb0bbbd3f2',
     categoryName: 'Wheat',
     categoryType: 'wheat',
@@ -23,8 +22,7 @@ export const db: Product[] = [
   {
     id: 'd6517a7d-d6e5-4140-9fd4-af8b0d6262cc',
     name: 'WH 1002',
-    description:
-      'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
+    description: 'The Nagasaki Lander',
     categoryId: '0a256070-cdd1-4392-aab6-23fb0bbbd3f2',
     categoryName: 'Wheat',
     categoryType: 'wheat',
@@ -34,8 +32,7 @@ export const db: Product[] = [
   {
     id: 'daa43958-47d5-4480-a64b-d43469a3815f',
     name: 'SB 420',
-    description:
-      'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
+    description: 'The most stylish range of shoes & sandals',
     categoryId: '8c8e4efa-729b-44d2-8692-3e5e978f7303',
     categoryName: 'Soybeans',
     categoryType: 'soybeans',
@@ -45,8 +42,7 @@ export const db: Product[] = [
   {
     id: '4cfb471e-076a-4b10-a0c6-42c221a96c1d',
     name: 'SB 801',
-    description:
-      'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
+    description: 'The slim & simple Maple Gaming Keyboard',
     categoryId: '8c8e4efa-729b-44d2-8692-3e5e978f7303',
     categoryName: 'Soybeans',
     categoryType: 'soybeans',
@@ -56,8 +52,7 @@ export const db: Product[] = [
   {
     id: '7ee76cfd-cfe6-4698-8a02-429047173856',
     name: 'SB 9990',
-    description:
-      'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
+    description: 'The beautiful range of Apple Naturalé',
     categoryId: '8c8e4efa-729b-44d2-8692-3e5e978f7303',
     categoryName: 'Soybeans',
     categoryType: 'soybeans',
@@ -77,7 +72,7 @@ export const db: Product[] = [
   {
     id: '80a30a69-08bb-464f-bd5f-a851216caa2b',
     name: 'OT 1202',
-    description: 'The Football Is Good For Training And Recreational Purposes',
+    description: 'Training And Recreational Purposes',
     categoryId: 'ac13ad3d-470d-4200-a5a1-18b42895e9ed',
     categoryName: 'Oats',
     categoryType: 'oats',
@@ -87,8 +82,7 @@ export const db: Product[] = [
   {
     id: 'faa63f8f-50a0-4abf-aebb-62377d64b664',
     name: 'OT 4021',
-    description:
-      'The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design',
+    description: 'The Apollotech B340',
     categoryId: 'ac13ad3d-470d-4200-a5a1-18b42895e9ed',
     categoryName: 'Oats',
     categoryType: 'oats',
@@ -98,8 +92,7 @@ export const db: Product[] = [
   {
     id: 'ff5e7968-5a4d-48a8-97ca-b3ab433fb972',
     name: 'OT 45-152',
-    description:
-      'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart',
+    description: 'New range of formal shirts are designed keeping you in mind. ',
     categoryId: 'ac13ad3d-470d-4200-a5a1-18b42895e9ed',
     categoryName: 'Oats',
     categoryType: 'oats',
@@ -120,8 +113,7 @@ export const db: Product[] = [
   {
     id: '878a2b82-c630-4030-9a6c-20922793e14d',
     name: 'CR 24125125',
-    description:
-      "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    description: "Boston's most advanced compression",
     categoryId: '8877c1ef-b4bf-4270-95aa-fbebe4f148e4',
     categoryName: 'Corn',
     categoryType: 'corn',
@@ -131,8 +123,7 @@ export const db: Product[] = [
   {
     id: 'fc750a09-951b-42df-9931-8b269989e4af',
     name: 'CA 41245',
-    description:
-      'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive',
+    description: 'The automobile layout consists of a front-engine design',
     categoryId: '947dc36d-f148-403d-b5a3-dfae50843f21',
     categoryName: 'Canola',
     categoryType: 'canola',
@@ -142,8 +133,7 @@ export const db: Product[] = [
   {
     id: '5820a553-4ffb-47d7-8946-964e0141382f',
     name: 'CA 51255',
-    description:
-      'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
+    description: 'Transaxle-type transmissions',
     categoryId: '947dc36d-f148-403d-b5a3-dfae50843f21',
     categoryName: 'Canola',
     categoryType: 'canola',
@@ -153,8 +143,7 @@ export const db: Product[] = [
   {
     id: '82bb96e7-8ec2-474d-ac7c-2875ec6e21b1',
     name: 'BR 1245125',
-    description:
-      'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
+    description: 'Goodness of 100% Natural Ingredients',
     categoryId: 'f20c00cc-6175-462e-bfed-76cfc98a4e70',
     categoryName: 'Barley',
     categoryType: 'barley',

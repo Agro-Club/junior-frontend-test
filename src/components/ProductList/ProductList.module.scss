@@ -1,13 +1,14 @@
 .root {
   padding: 20px;
-  & > :not(:first-child){
-    margin-top: 16px;
-  }
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-columns: 1fr;
 }
 
 .filtersContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: max-content max-content;
+  grid-gap: 24px;
 }
 
 .itemsContainer {
@@ -17,5 +18,13 @@
 
 .productContainer {
   padding: 8px;
-  border: 1px solid #000;
+  border-bottom: 1px solid #989898;
+
+  & > span:not(:first-child) {
+    margin-left: 8px;
+  }
+}
+
+.productName {
+  font-weight: bold;
 }

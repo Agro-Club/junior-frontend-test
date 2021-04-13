@@ -9,7 +9,7 @@ export class PagingLimitOffsetDto {
   })
   @IsOptional()
   @IsInt()
-  @Transform(({ value }) => parseInt(value, 10))
+  @Transform(({ value }) => parseInt(value, 20))
   offset?: number
 
   @ApiProperty({
@@ -18,7 +18,7 @@ export class PagingLimitOffsetDto {
   })
   @IsOptional()
   @IsInt()
-  @Transform(({ value }) => parseInt(value, 10))
+  @Transform(({ value }) => parseInt(value, 20))
   limit?: number
 }
 
@@ -30,16 +30,16 @@ export class PagingDto {
   })
   @IsOptional()
   @IsInt()
-  @Transform(({ value }) => parseInt(value, 10))
-  page: number = 1
+  @Transform(({ value }) => parseInt(value, 20))
+  page = 1
 
   @ApiProperty({
     description: 'Page size',
     required: false,
-    default: 10,
+    default: 20,
   })
   @IsOptional()
   @IsInt()
-  @Transform(({ value }) => parseInt(value, 10))
-  pageSize: number = 10
+  @Transform(({ value }) => parseInt(value, 20))
+  pageSize = 20
 }
