@@ -50,7 +50,9 @@
         "categoryName": "string",
         "categoryType": "string", 
         "isLimited": "boolean",
-        "isNew": "boolean"
+        "isNew": "boolean",
+        "price": "number",
+        "discount": "number | null"
       }
     ]
   }

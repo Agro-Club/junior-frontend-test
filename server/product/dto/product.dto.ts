@@ -1,5 +1,5 @@
 import { Product } from 'product/product.types'
-import { IsBoolean, IsString } from 'class-validator'
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 
 export class ProductDto implements Product {
@@ -61,4 +61,22 @@ export class ProductDto implements Product {
     required: true,
   })
   isNew: boolean
+
+  @IsNumber()
+  @ApiProperty({
+    description: 'Product price.',
+    type: Number,
+    required: true,
+  })
+  price: number
+
+  @IsNumber()
+  @IsOptional()
+  @ApiProperty({
+    description: 'Product discount.',
+    type: Number,
+    required: false,
+    nullable: true,
+  })
+  discount: number | null
 }

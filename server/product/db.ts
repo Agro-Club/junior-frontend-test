@@ -18,6 +18,8 @@ export const db: Product[] = [
     categoryType: 'wheat',
     isLimited: false,
     isNew: true,
+    price: 24.5,
+    discount: null,
   },
   {
     id: 'd6517a7d-d6e5-4140-9fd4-af8b0d6262cc',
@@ -28,6 +30,8 @@ export const db: Product[] = [
     categoryType: 'wheat',
     isLimited: false,
     isNew: false,
+    price: 1250,
+    discount: null,
   },
   {
     id: 'daa43958-47d5-4480-a64b-d43469a3815f',
@@ -38,6 +42,8 @@ export const db: Product[] = [
     categoryType: 'soybeans',
     isLimited: true,
     isNew: false,
+    price: 10,
+    discount: 0.25,
   },
   {
     id: '4cfb471e-076a-4b10-a0c6-42c221a96c1d',
@@ -48,6 +54,8 @@ export const db: Product[] = [
     categoryType: 'soybeans',
     isLimited: false,
     isNew: false,
+    price: 38.6,
+    discount: null,
   },
   {
     id: '7ee76cfd-cfe6-4698-8a02-429047173856',
@@ -58,6 +66,8 @@ export const db: Product[] = [
     categoryType: 'soybeans',
     isLimited: false,
     isNew: false,
+    price: 25,
+    discount: 1.5,
   },
   {
     id: '3f8f6bbe-eeb3-430b-8356-718caadfb930',
@@ -68,6 +78,8 @@ export const db: Product[] = [
     categoryType: 'oats',
     isLimited: false,
     isNew: false,
+    price: 110,
+    discount: null,
   },
   {
     id: '80a30a69-08bb-464f-bd5f-a851216caa2b',
@@ -78,6 +90,8 @@ export const db: Product[] = [
     categoryType: 'oats',
     isLimited: true,
     isNew: true,
+    price: 100,
+    discount: 2.25,
   },
   {
     id: 'faa63f8f-50a0-4abf-aebb-62377d64b664',
@@ -88,6 +102,8 @@ export const db: Product[] = [
     categoryType: 'oats',
     isLimited: false,
     isNew: false,
+    price: 1030,
+    discount: 55,
   },
   {
     id: 'ff5e7968-5a4d-48a8-97ca-b3ab433fb972',
@@ -98,6 +114,8 @@ export const db: Product[] = [
     categoryType: 'oats',
     isLimited: false,
     isNew: false,
+    price: 30,
+    discount: null,
   },
   {
     id: '96a846ec-43e6-49ea-ae96-ca43166ef7d1',
@@ -109,6 +127,8 @@ export const db: Product[] = [
     categoryType: 'corn',
     isLimited: true,
     isNew: true,
+    price: 30,
+    discount: null,
   },
   {
     id: '878a2b82-c630-4030-9a6c-20922793e14d',
@@ -119,6 +139,8 @@ export const db: Product[] = [
     categoryType: 'corn',
     isLimited: false,
     isNew: false,
+    price: 115,
+    discount: 9.5,
   },
   {
     id: 'fc750a09-951b-42df-9931-8b269989e4af',
@@ -129,6 +151,8 @@ export const db: Product[] = [
     categoryType: 'canola',
     isLimited: false,
     isNew: false,
+    price: 100.55,
+    discount: null,
   },
   {
     id: '5820a553-4ffb-47d7-8946-964e0141382f',
@@ -139,6 +163,8 @@ export const db: Product[] = [
     categoryType: 'canola',
     isLimited: true,
     isNew: false,
+    price: 100,
+    discount: 2.25,
   },
   {
     id: '82bb96e7-8ec2-474d-ac7c-2875ec6e21b1',
@@ -149,5 +175,7 @@ export const db: Product[] = [
     categoryType: 'barley',
     isLimited: false,
     isNew: true,
+    price: 55,
+    discount: null,
   },
 ]
