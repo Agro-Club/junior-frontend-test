@@ -14,7 +14,9 @@ export const filters = createSlice({
         return category !== action.payload.category
       })
     },
-    clearSelectedCategories: state => (state.selectedCategories = []),
+    clearSelectedCategories: state => {
+      state.selectedCategories = []
+    },
     setIsLimited: (state, action) => {
       state.isLimited = action.payload.isLimited
     },

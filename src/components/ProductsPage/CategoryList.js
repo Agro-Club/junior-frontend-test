@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategories, removeSelectedCategory, addSelectedCategory, getSelectedCategories } from '../state'
+import {
+  fetchCategories,
+  removeSelectedCategory,
+  addSelectedCategory,
+  getSelectedCategories,
+  clearSelectedCategories,
+} from '../state'
 import { CATEGORIES_ERROR, CATEGORIES_LOADING } from '../state/categories/categories'
 import { getCategories, getCategoriesStatus } from '../state/categories/selectors'
 
@@ -37,8 +43,23 @@ export const CategoryList = () => {
     }
   }
 
+  const onAllButtonClick = () => {
+    dispatch(clearSelectedCategories())
+  }
+
+  const getAllButtonColor = () => {
+    if (selectedCategories.length === 0) {
+      return '#037BFF'
+    } else {
+      return 'white'
+    }
+  }
+
   return (
     <div>
+      <button style={{ backgroundColor: getAllButtonColor() }} onClick={onAllButtonClick}>
+        All
+      </button>
       {categories.map(category => {
         return (
           <button
