@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { categories } from './components/state/categories/categories'
+import { categories, filters } from './components/state'
 
 export const store = configureStore({
   reducer: {
     categories: categories.reducer,
+    filters: filters.reducer,
   },
 })

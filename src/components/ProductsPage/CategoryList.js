@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategories } from '../state'
+import { fetchCategories, removeSelectedCategory, addSelectedCategory, getSelectedCategories } from '../state'
 import { CATEGORIES_ERROR, CATEGORIES_LOADING } from '../state/categories/categories'
 import { getCategories, getCategoriesStatus } from '../state/categories/selectors'
 
@@ -9,6 +9,7 @@ export const CategoryList = () => {
 
   const status = useSelector(getCategoriesStatus)
   const categories = useSelector(getCategories)
+  const selectedCategories = useSelector(getSelectedCategories)
 
   useEffect(() => {
     dispatch(fetchCategories())
@@ -19,10 +20,35 @@ export const CategoryList = () => {
   } else if (status === CATEGORIES_ERROR) {
     return <>Error...</>
   }
+
+  const onCategoryClick = ({ id }) => {
+    if (selectedCategories.indexOf(id) !== -1) {
+      dispatch(removeSelectedCategory({ category: id }))
+    } else {
+      dispatch(addSelectedCategory({ category: id }))
+    }
+  }
+
+  const getButtonColor = ({ id }) => {
+    if (selectedCategories.indexOf(id) !== -1) {
+      return '#037BFF'
+    } else {
+      return 'white'
+    }
+  }
+
   return (
     <div>
       {categories.map(category => {
-        return <button key={category.id}>{category.name}</button>
+        return (
+          <button
+            style={{ backgroundColor: getButtonColor(category) }}
+            onClick={() => onCategoryClick(category)}
+            key={category.id}
+          >
+            {category.name}
+          </button>
+        )
       })}
     </div>
   )
