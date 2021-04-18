@@ -1,9 +1,11 @@
-import ProductList from './components/ProductList/ProductList'
+// import ProductList from './components/ProductList/ProductList'
+import { ProductsPage } from './components/ProductsPage/ProductsPage'
 
 function App() {
   return (
     <div>
-      <ProductList />
+      {/* <ProductList /> */}
+      <ProductsPage />
     </div>
   )
 }
