@@ -62,7 +62,7 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "start": "set ESLINT_NO_DEV_ERRORS=true && concurrently yarn:client yarn:server",
+    "start": "set ESLINT_NO_DEV_ERRORS=true && concurrently npm:client npm:server",
     "client": "react-scripts start",
     "server": "set NODE_ENV=development && nest start -p server/tsconfig.build.json --watch",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix"
