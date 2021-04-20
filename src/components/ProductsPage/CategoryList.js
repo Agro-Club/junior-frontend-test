@@ -57,6 +57,7 @@ export const CategoryList = () => {
 
   return (
     <div>
+      <p>Category</p>
       <button style={{ backgroundColor: getAllButtonColor() }} onClick={onAllButtonClick}>
         All
       </button>
