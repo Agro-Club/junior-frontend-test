@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { selectedCategories: [], isLimited: false, isNew: false }
+const initialState = { selectedCategories: [], isLimited: false, isNew: false, searchString: '' }
 
 export const filters = createSlice({
   name: 'filters',
@@ -23,7 +23,17 @@ export const filters = createSlice({
     setIsNew: (state, action) => {
       state.isNew = action.payload.isNew
     },
+    setSearchString: (state, action) => {
+      state.searchString = action.payload.searchString
+    },
   },
 })
 const { actions } = filters
-export const { addSelectedCategory, removeSelectedCategory, clearSelectedCategories, setIsLimited, setIsNew } = actions
+export const {
+  addSelectedCategory,
+  removeSelectedCategory,
+  clearSelectedCategories,
+  setIsLimited,
+  setIsNew,
+  setSearchString,
+} = actions
