@@ -20,8 +20,8 @@ export const ProductsTitle = () => {
     <>
       <div>
         <h1>Products</h1>
-        <form onChange={onChange} register={register}>
-          <input id="search" type="text" value={searchString} placeholder="Search among products" />
+        <form onChange={onChange}>
+          <input {...register('search')} type="text" defaultValue={searchString} placeholder="Search among products" />
         </form>
       </div>
     </>

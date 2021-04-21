@@ -1,9 +1,9 @@
-import { isLimited, isNew, setIsLimited, setIsNew } from '../state'
+import { getIsLimited, getIsNew, setIsLimited, setIsNew } from '../state'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const StatusSection = () => {
-  const isLimitedChecked = useSelector(isLimited)
-  const isNewChecked = useSelector(isNew)
+  const isLimitedChecked = useSelector(getIsLimited)
+  const isNewChecked = useSelector(getIsNew)
   const dispatch = useDispatch()
 
   const isLimitedOnChange = () => {

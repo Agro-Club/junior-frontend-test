@@ -12,8 +12,13 @@ export const categories = createSlice({
   initialState,
   extraReducers: {
     [fetchCategories.fulfilled]: (state, action) => {
-      state.status = CATEGORIES_SUCCESS
-      state.categories = action.payload
+      if (Array.isArray(action.payload)) {
+        state.status = CATEGORIES_SUCCESS
+        state.categories = action.payload
+      } else {
+        state.status = CATEGORIES_ERROR
+        state.categories = []
+      }
     },
     [fetchCategories.pending]: state => {
       state.status = CATEGORIES_LOADING
