@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
 import {
   fetchCategories,
   removeSelectedCategory,
@@ -35,41 +36,45 @@ export const CategoryList = () => {
     }
   }
 
-  const getButtonColor = ({ id }) => {
-    if (selectedCategories.indexOf(id) !== -1) {
-      return '#037BFF'
-    } else {
-      return 'white'
-    }
+  const isCategoryActive = ({ id }) => {
+    return selectedCategories.indexOf(id) !== -1
+  }
+
+  const isAllCategoriesActive = () => {
+    return selectedCategories.length === 0
   }
 
   const onAllButtonClick = () => {
     dispatch(clearSelectedCategories())
   }
 
-  const getAllButtonColor = () => {
-    if (selectedCategories.length === 0) {
-      return '#037BFF'
-    } else {
-      return 'white'
-    }
-  }
-
+  const FiltersLabel = styled.p`
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #a8b8ca;
+  `
+  const Button = styled.button`
+    border-color: #037bff;
+    border-width: thin;
+    border-radius: 8px;
+    margin-right: 10px;
+    padding: 3px 17px;
+    color: ${props => (props.activated ? '#FFFFFF' : '#037bff')};
+    background-color: ${props => (props.activated ? '#037bff' : '#FFFFFF')};
+  `
   return (
     <div>
-      <p>Category</p>
-      <button style={{ backgroundColor: getAllButtonColor() }} onClick={onAllButtonClick}>
+      <FiltersLabel>Category</FiltersLabel>
+      <Button activated={isAllCategoriesActive()} onClick={onAllButtonClick}>
         All
-      </button>
+      </Button>
       {categories.map(category => {
         return (
-          <button
-            style={{ backgroundColor: getButtonColor(category) }}
-            onClick={() => onCategoryClick(category)}
-            key={category.id}
-          >
+          <Button activated={isCategoryActive(category)} onClick={() => onCategoryClick(category)} key={category.id}>
             {category.name}
-          </button>
+          </Button>
         )
       })}
     </div>
