@@ -66,6 +66,39 @@ const HeaderProductPrice = styled.p`
   color: rgba(0, 0, 0, 0.96);
 `
 
+const HasDiscount = styled.p`
+  color: #ff9900;
+  font-size: 12px;
+  line-height: 16px;
+`
+const RightColumn = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: min-content;
+  padding: 5px;
+`
+const IsLimited = styled.div`
+  background: #e7eef9;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 20px;
+  text-align: center;
+  color: #889bb1;
+  margin: 5px;
+`
+
+const IsNew = styled.div`
+  background: #e6f5e6;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 20px;
+  text-align: center;
+  color: #20b02e;
+  margin: 5px;
+`
+
 export const ProductsList = () => {
   const dispatch = useDispatch()
 
@@ -103,6 +136,14 @@ export const ProductsList = () => {
     }
   }
 
+  const getDiscountString = ({ discount }) => {
+    if (discount !== null) {
+      return `Discount $${discount} per bag`
+    } else {
+      return ''
+    }
+  }
+
   return (
     <>
       <ProductsContainer>
@@ -115,7 +156,12 @@ export const ProductsList = () => {
                 <HeaderProductName>{product.name}</HeaderProductName>
                 <HeaderProductDesc>{product.description}</HeaderProductDesc>
                 <HeaderProductPrice>{'$' + product.price}</HeaderProductPrice>
+                <HasDiscount>{getDiscountString(product)}</HasDiscount>
               </div>
+              <RightColumn>
+                {product.isLimited && <IsLimited>Limited</IsLimited>}
+                {product.isNew && <IsNew>New</IsNew>}
+              </RightColumn>
             </ProductCard>
           )
         })}

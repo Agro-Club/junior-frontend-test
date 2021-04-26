@@ -9,7 +9,6 @@ const RootContainer = styled.div`
   grid-gap: 16px;
   grid-auto-columns: 1fr;
   background: #f2f2f2;
-  // padding: 20px;
 `
 
 export const ProductsPage = () => {
