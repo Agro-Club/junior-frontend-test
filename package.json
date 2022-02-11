@@ -22,7 +22,7 @@
     "ip": "^1.1.5",
     "nconf": "^0.11.2",
     "nestjs-pino": "^1.4.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "pino": "^6.11.2",
     "pino-pretty": "^4.7.1",
     "react": "^17.0.2",
